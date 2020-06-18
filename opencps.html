@@ -1,0 +1,243 @@
+<!--申明当前文档类型-->
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前页面的编码集：charset=gbk,gb2312(中文编码)，utf-8国际编码-->
+		<meta http-equiv="Content-Type" content="textml; charset=utf-8" />
+		<title>OpenCPS演示平台 - Jack.Hu(半途而飞)</title>
+		<!-- 字数限制在31字 用英文逗号离开-->
+		<meta name="Keywords" content="关键词,关键词" />
+		<!-- 简介 描述信息 百度要求是80字以内 标准是76个字-->
+		<meta name="description" content="描述" />
+		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/base.css">
+
+		<style type='text/css'>
+			*{margin:0px;padding:0px;}
+			a{text-decoration:none;}
+			ul{list-style:none;}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jsPlumb.min.js"></script> -->
+		<script type="text/javascript" src="js/jsPlumb.js"></script>
+	</head>
+<body>
+	<div class="OCPS clearfix">	
+		<header class='OCPS-head'>
+			<h1>西安电子科技大学-OpenCPS演示平台</h1>
+			<div id="submit" class="submitButton">
+				<p>运行操作</p>
+			</div>
+		</header>
+		<ul class='devices-wrap'>
+			<li class='funcWrap clearfix' id="humidity1">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/datacollect_humidity.png" alt="images/datacollect_humidity.png">
+				</div>
+				<div class='spec'>
+					<h3>环境湿度1</h3>
+					<p>获取环境当前的湿度</p>
+				</div>
+			</li>
+			<!-- <li class='funcWrap clearfix' id="humidity2">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/datacollect_humidity.png" alt="images/datacollect_humidity.png">
+				</div>
+				<div class='spec'>
+					<h3>环境湿度2</h3>
+					<p>获取环境当前西电的湿度</p>
+				</div>
+			</li> -->
+			<li class='funcWrap clearfix' id="temp1">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/datacollect_temperature.png" alt="images/datacollect_temperature.png">
+				</div>
+				<div class='spec'>
+					<h3>环境温度1</h3>
+					<p>获取环境当前的温度</p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="temp2">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/datacollect_temperature.png" alt="images/datacollect_temperature.png">
+				</div>
+				<div class='spec'>
+					<h3>环境温度2</h3>
+					<p>获取环境当前西电的温度</p>
+				</div>
+			</li>
+			<!-- <li class='funcWrap clearfix' id="illumination">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/datacollect_lightsensor.png" alt="images/datacollect_lightsensor.png">
+				</div>
+				<div class='spec'>
+					<h3>光照强度</h3>
+					<p>获取环境当前的光线强度</p>
+				</div>
+			</li> -->
+			<li class='funcWrap clearfix' id="soilMoisture">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/datacollect_soilwet.png" alt="images/datacollect_soilwet.png">
+				</div>
+				<div class='spec'>
+					<h3>土壤湿度1</h3>
+					<p>获取土壤湿度</p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="soilMoisture1">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/datacollect_soilwet.png" alt="images/datacollect_soilwet.png">
+				</div>
+				<div class='spec'>
+					<h3>土壤湿度2</h3>
+					<p>获取土壤湿度</p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="waterDepth">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/datacollect_waterdeep.png" alt="images/datacollect_waterdeep.png">
+				</div>
+				<div class='spec'>
+					<h3>水深湿度</h3>
+					<p>获取当前水深</p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="gm">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/gm.png" alt="images/gm.png">
+				</div>
+				<div class='spec'>
+					<h3>光敏传感器</h3>
+					<p>获取光照强度</p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="andGate">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/1.png" alt="images/1.png">
+				</div>
+				<div class='spec'>
+					<h3>与门</h3>
+					<p>设备逻辑与控制</p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="orGate">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/2.png" alt="images/2.png">
+				</div>
+				<div class='spec'>
+					<h3>或门</h3>
+					<p>设备逻辑或控制</p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="notGate">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/3.png" alt="images/3.png">
+				</div>
+				<div class='spec'>
+					<h3>非门</h3>
+					<p>设备逻辑非控制</p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="delay">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/4.png" alt="images/4.png">
+				</div>
+				<div class='spec'>
+					<h3>延时器</h3>
+					<p>延时后执行</p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="light">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/function_bulb.png" alt="images/function_bulb.png">
+				</div>
+				<div class='spec'>
+					<h3>灯泡</h3>
+					<p></p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="alarm">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/alarm.png" alt="images/alarm.png">
+				</div>
+				<div class='spec'>
+					<h3>警报器</h3>
+					<p></p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="pump">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/function_waterpump.png" alt="images/function_waterpump.png">
+				</div>
+				<div class='spec'>
+					<h3>水泵</h3>
+					<p></p>
+				</div>
+				
+			</li>
+			<li class='funcWrap clearfix' id="relay101">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/up.png" alt="images/function_switch.png">
+				</div>
+				<div class='spec'>
+					<h3>大棚上升</h3>
+					<p></p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="relay102">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/down.png" alt="images/function_switch.png">
+				</div>
+				<div class='spec'>
+					<h3>大棚下降</h3>
+					<p></p>
+				</div>
+			</li>
+			<li class='funcWrap clearfix' id="relay106">
+				<div class='imageWrap'>
+					<img class='funcImg' src="images/function_switch.png" alt="images/function_switch.png">
+				</div>
+				<div class='spec'>
+					<h3>继电器106</h3>
+					<p></p>
+				</div>
+			</li>
+		
+		</ul>
+
+		<div id="canvas" class="canvas">
+			
+			<!-- <div id='confirmDe'>
+				<p>确认设备</p>
+			</div> -->
+			
+			<div class="loading" id='loading'>
+			     <span></span>
+			     <p>正在初始化...</p>
+			</div>
+			<div class="loading" id='loading1'>
+			     <span></span>
+			     <p>正在部署中...</p>
+			</div>
+			
+			<div class="rtUpdate" id="rtUpdate">
+				<p>
+					<span>实时湿度：</span>
+					<span id='humUpdate'>50.0</span>
+				</p>
+				<p>
+					<span>实时温度：</span>
+					<span id='temUpdate'>27.0</span>
+				</p>
+			</div>
+			
+
+		</div>
+	</div>
+	
+	<script src='js/public.js'></script>
+	<script src='js/function.js'></script>
+
+</body>
+</html>
